@@ -1,0 +1,11 @@
+[Unit]
+Description=Space's Gunicorn Instance
+After=network.target
+
+[Service]
+User=space
+Group=www-data
+ExecStart=/home/space/space/bin/gunicorn --workers 4 --bind unix:/tmp/space.sock -m 007 app:app
+
+[Install]
+WantedBy=multi-user.target
